@@ -128,13 +128,7 @@ void loop() {
   delay(2000);
 
   // Snaps the second picture
-  fb = esp_camera_fb_get();
-  if(!fb) {
-    Serial.println("Camera capture failed for image 2");
-    client.publish(mqttTopicStream, "Camera capture failed for image 2\0");
-    return;
-  }
-
+/*
   buffer2 = base64::encode((uint8_t *)fb->buf, fb->len);
   // Use strOut2 for a status message
   sprintf(strOut2, "Got frame2: %d x %d (%d/%d)", fb->width, fb->height, fb->len, buffer2.length());
@@ -156,7 +150,7 @@ void loop() {
   } else {
     client.publish(mqttTopicStream, "Over limit on image 2 - We'll try to publish the next pic\0");
   }
-
+*/
   esp_camera_fb_return(fb);
   buffer2.clear();
 
